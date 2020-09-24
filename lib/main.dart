@@ -90,6 +90,11 @@ class TouchThePixel extends StatelessWidget {
                                   ),
                                   Spacer(),
                                   Text(
+                                    'Click accuracy: ${_accuracy.toStringAsFixed(4)}%',
+                                    style: Theme.of(context).textTheme.headline3,
+                                  ),
+                                  Spacer(),
+                                  Text(
                                     'Congratulations!',
                                     style: Theme.of(context).textTheme.headline3.copyWith(fontWeight: FontWeight.w100),
                                   ),
@@ -116,6 +121,11 @@ class TouchThePixel extends StatelessWidget {
                                   Text(
                                     'You lost!',
                                     style: Theme.of(context).textTheme.headline1.copyWith(fontWeight: FontWeight.w100),
+                                  ),
+                                  Spacer(),
+                                  Text(
+                                    'Click accuracy: ${_accuracy.toStringAsFixed(4)}%',
+                                    style: Theme.of(context).textTheme.headline3,
                                   ),
                                   Spacer(),
                                   Text(
