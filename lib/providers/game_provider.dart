@@ -14,6 +14,16 @@ class GameProvider with ChangeNotifier, DiagnosticableTreeMixin {
   Pixel currentPixel;
   Offset lastClick;
 
+  double get accuracy {
+    final _acc = (model.score / model.totalClicks) * 100;
+
+    if (_acc.isFinite) {
+      return _acc;
+    }
+
+    return 0;
+  }
+
   void foundPixel() {
     if (model.score >= 4) {
       model = GameState.won(model.score + 1, model.totalClicks + 1);
@@ -47,9 +57,9 @@ class GameProvider with ChangeNotifier, DiagnosticableTreeMixin {
       return;
     }
 
-    Random _rand = Random();
+    final _rand = Random();
 
-    Offset _randomOffset = Offset((_rand.nextDouble() * constraints.biggest.width / 2) - constraints.biggest.width / 4,
+    final _randomOffset = Offset((_rand.nextDouble() * constraints.biggest.width / 2) - constraints.biggest.width / 4,
         (_rand.nextDouble() * constraints.biggest.height / 2) - constraints.biggest.height / 4);
 
     currentPixel = Pixel(Offset(constraints.biggest.width / 2, constraints.biggest.height / 2) + _randomOffset);
